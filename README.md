@@ -13,11 +13,11 @@ curl --location --request POST '{base-url}/create-downtime?provider=any_provider
 
 Read all downtimes:
 
-curl --location --request GET 'localhost:8080/get-all-downtimes'
+curl --location --request GET '{base-url}/get-all-downtimes'
 
 Read a downtime:
 
-curl --location --request GET 'localhost:8080/get-downtime/{id}'
+curl --location --request GET '{base-url}/get-downtime/{id}'
 
 Update a downtime:
 
@@ -30,4 +30,6 @@ curl --location --request PUT '{base-url}/update-downtime/{id}?provider=any_prov
 
 Delete a downtime:
 
-curl --location --request DELETE 'localhost:8080/delete-downtime/{id}' 
+curl --location --request DELETE '{base-url}/delete-downtime/{id}' 
+
+In local deployment base-url is localhost:8080

@@ -27,5 +27,10 @@ public class DowntimeController {
         return ResponseEntity.ok(this.downtimeRepository.save(p));
     }
 
+    @DeleteMapping("/delete")
+    public ResponseEntity deleteDowntime(@RequestParam long id){
+        this.downtimeRepository.deleteById(id);
+        return ResponseEntity.ok("Deleted");
+    }
 
 }

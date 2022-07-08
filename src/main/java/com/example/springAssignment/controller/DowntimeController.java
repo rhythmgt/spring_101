@@ -1,13 +1,12 @@
 package com.example.springAssignment.controller;
 
+import com.example.springAssignment.model.Downtime;
 import com.example.springAssignment.repository.DowntimeRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/get-downtimes")
+@RequestMapping
 public class DowntimeController {
 
     private final DowntimeRepository downtimeRepository;
@@ -16,8 +15,17 @@ public class DowntimeController {
         this.downtimeRepository = downtimeRepository;
     }
 
-    @GetMapping
-    public ResponseEntity getAllProducts(){
+    @GetMapping("/getall")
+    public ResponseEntity getAllDowntimes(){
         return ResponseEntity.ok(this.downtimeRepository.findAll());
     }
+
+    @PostMapping("/post")
+    public ResponseEntity postDowntime(@RequestParam(name="provider") String provider, @RequestParam(name = "flow_name") String flow_name, @RequestBody Downtime p){
+        p.setFlow(flow_name);
+        p.setProvider(provider);
+        return ResponseEntity.ok(this.downtimeRepository.save(p));
+    }
+
+
 }

@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.DateTimeException;
 
 @Entity
 public class Downtime {
@@ -17,14 +20,14 @@ public class Downtime {
 
     private String flow;
 
-    private Date downFrom;
+    private Timestamp downFrom;
 
-    private Date downTo;
+    private Timestamp downTo;
 
     public Downtime() {
     }
 
-    public Downtime(Long id, String provider, String flow, Date downFrom, Date downTo) {
+    public Downtime(Long id, String provider, String flow, Timestamp downFrom, Timestamp downTo) {
         this.id = id;
         this.provider = provider;
         this.flow = flow;
@@ -56,19 +59,19 @@ public class Downtime {
         this.flow = flow;
     }
 
-    public Date getDownFrom() {
+    public Timestamp getDownFrom() {
         return downFrom;
     }
 
-    public void setDownFrom(Date downFrom) {
+    public void setDownFrom(Timestamp downFrom) {
         this.downFrom = downFrom;
     }
 
-    public Date getDownTo() {
+    public Timestamp getDownTo() {
         return downTo;
     }
 
-    public void setDownTo(Date downTo) {
+    public void setDownTo(Timestamp downTo) {
         this.downTo = downTo;
     }
 }
